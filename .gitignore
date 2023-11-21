@@ -1,5 +1,13 @@
-# Object file
-*.o
+def vhod(M):
+    try:
+        return int(input(M))
+    except ValueError:
+        print('Пожалуйста, введите число.')
 
-# Ada Library Information
-*.ali
+def valuta(SUM):
+    if SUM % 10 == 1 and SUM % 100 != 11:
+        return f'{SUM} рубль'
+    elif 2 <= SUM% 10 <= 4 and (SUM % 100 < 10 or SUM % 100 >= 20):
+        return f'{SUM} рубля'
+    else:
+        return f'{SUM} рублей'
