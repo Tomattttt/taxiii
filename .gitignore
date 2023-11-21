@@ -11,3 +11,17 @@ def valuta(SUM):
         return f'{SUM} рубля'
     else:
         return f'{SUM} рублей'
+def main():
+    n = vhod('Введите количество сотрудников: ')
+    sotrudnik = {i + 1: vhod(f'Укажите расстояние для {i + 1} сотрудника: ') for i in range(n)}
+    taxi = {i + 1: vhod(f'Укажите цену для {i + 1} такси: ') for i in range(n)}
+    TAXI = sorted(taxi.items(), key=lambda x: x[1], reverse=True)
+    SOTRUDNIK = sorted(sotrudnik.items(), key=lambda x: x[1])
+    itog= sum(TAXI[i][1] * SOTRUDNIK[i][1] for i in range(n))
+
+    print("Наиболее выгодный вариант рассадки сотрудников в такси:", end=' ')
+    print(*[pair[0] for pair in TAXI])
+    print(f'Итоговая сумма тарифов: {valuta(itog)}')
+
+if __name__ == "__main__":
+    main()
